@@ -194,7 +194,7 @@ const CommunityHubPage = () => {
         </div>
       </div>
 
-          <Tabs defaultValue="mentorship" className="w-full">
+      <Tabs defaultValue="mentorship" className="w-full">
             <TabsList className="grid w-full grid-cols-4">
               <TabsTrigger value="mentorship">Mentorship</TabsTrigger>
               <TabsTrigger value="crowdfunding">Crowdfunding</TabsTrigger>
@@ -656,16 +656,14 @@ const CommunityHubPage = () => {
                         Create Lending Group
                         <Users className="ml-2 h-4 w-4" />
                       </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </TabsContent>
-          </Tabs>
+                     </div>
+                   </CardContent>
+                 </Card>
+               </div>
+             </TabsContent>
+           </Tabs>
         </div>
-      </div>
-    </div>
-  );
-};
+      );
+    };
 
-export default CommunityHubPage;
+    export default CommunityHubPage;

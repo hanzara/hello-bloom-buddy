@@ -11,9 +11,7 @@ const VotingSystemPage = () => {
 
   return (
     <div className="space-y-8">
-
-        <VotingSystem />
-      </div>
+      <VotingSystem />
     </div>
   );
 };

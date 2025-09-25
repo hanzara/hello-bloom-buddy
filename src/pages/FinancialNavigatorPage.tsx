@@ -467,9 +467,9 @@ const FinancialNavigatorPage = () => {
             </TabsContent>
           </Tabs>
         </div>
+      </main>
       </div>
-    </div>
-  );
-};
+    );
+  };
 
 export default FinancialNavigatorPage;
