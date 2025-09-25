@@ -81,6 +81,18 @@ const Navigation = () => {
         { label: 'Staking', path: '/staking' },
         { label: 'P2P Trading', path: '/p2p-trading' }
       ]
+    },
+    {
+      id: 'community',
+      label: 'Community',
+      icon: Globe,
+      path: '/community',
+      subtabs: [
+        { label: 'Community Hub', path: '/community' },
+        { label: 'Networking', path: '/community' },
+        { label: 'Voting System', path: '/community' },
+        { label: 'Financial Navigator', path: '/community' }
+      ]
     }
   ];
 

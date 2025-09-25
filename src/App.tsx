@@ -29,6 +29,7 @@ import LoanManagementPage from "./pages/LoanManagementPage";
 import AdaptiveCreditPage from "./pages/AdaptiveCreditPage";
 import BlockchainLendingPage from "./pages/BlockchainLendingPage";
 import AnalyticsPage from "./pages/AnalyticsPage";
+import CommunityPage from "./pages/CommunityPage";
 import CommunityHubPage from "./pages/CommunityHubPage";
 import CommunityNetworkingPage from "./pages/CommunityNetworkingPage";
 import VotingSystemPage from "./pages/VotingSystemPage";
@@ -82,12 +83,12 @@ const getSubNavItems = (pathname: string) => {
     ];
   }
   
-  if (pathname.startsWith('/community-hub') || pathname === '/community-networking' || pathname === '/voting-system' || pathname === '/financial-navigator') {
+  if (pathname.startsWith('/community')) {
     return [
-      { title: 'Community Hub', path: '/community-hub', description: 'Community features' },
-      { title: 'Networking', path: '/community-networking', badge: 'New', description: 'Cross-chama networking' },
-      { title: 'Voting System', path: '/voting-system', description: 'Democratic decision making' },
-      { title: 'Financial Navigator', path: '/financial-navigator', badge: 'Guide', description: 'Financial guidance' },
+      { title: 'Community Hub', path: '/community', description: 'Community platform' },
+      { title: 'Networking', path: '/community', badge: 'New', description: 'Cross-chama networking' },
+      { title: 'Voting System', path: '/community', description: 'Democratic decision making' },
+      { title: 'Financial Navigator', path: '/community', badge: 'Guide', description: 'Financial guidance' },
     ];
   }
   
@@ -175,6 +176,7 @@ function App() {
                         <Route path="/adaptive-credit" element={<AdaptiveCreditPage />} />
                         <Route path="/blockchain-lending" element={<BlockchainLendingPage />} />
                         <Route path="/analytics" element={<AnalyticsPage />} />
+                        <Route path="/community" element={<CommunityPage />} />
                         <Route path="/community-hub" element={<CommunityHubPage />} />
                         <Route path="/community-networking" element={<CommunityNetworkingPage />} />
                         <Route path="/voting-system" element={<VotingSystemPage />} />

@@ -14,12 +14,9 @@ import {
   Star, DollarSign, Target, HelpCircle, Shield, Lightbulb,
   CheckCircle, Clock, ArrowRight, UserPlus, MessageCircle
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
-import Navigation from '@/components/Navigation';
 
 const CommunityHubPage = () => {
-  const navigate = useNavigate();
   const { toast } = useToast();
   
   const [selectedMentor, setSelectedMentor] = useState(null);
@@ -179,27 +176,23 @@ const CommunityHubPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-purple-50">
-      <Navigation />
-      
-      <main className="container mx-auto px-4 py-8">
-        <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <div className="mb-8">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 bg-gradient-to-r from-green-500 to-blue-500 rounded-lg">
-                <Users className="h-8 w-8 text-white" />
-              </div>
-              <div>
-                <h1 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
-                  Community Empowerment Hub
-                </h1>
-                <p className="text-muted-foreground text-lg">
-                  Connect, learn, and grow together in our financial community
-                </p>
-              </div>
-            </div>
+    <div className="space-y-8">
+      {/* Header */}
+      <div className="mb-8">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="p-3 bg-gradient-to-r from-green-500 to-blue-500 rounded-lg">
+            <Users className="h-8 w-8 text-white" />
           </div>
+          <div>
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+              Community Empowerment Hub
+            </h1>
+            <p className="text-muted-foreground text-lg">
+              Connect, learn, and grow together in our financial community
+            </p>
+          </div>
+        </div>
+      </div>
 
           <Tabs defaultValue="mentorship" className="w-full">
             <TabsList className="grid w-full grid-cols-4">
@@ -670,7 +663,7 @@ const CommunityHubPage = () => {
             </TabsContent>
           </Tabs>
         </div>
-      </main>
+      </div>
     </div>
   );
 };
