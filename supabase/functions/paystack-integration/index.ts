@@ -41,14 +41,13 @@ serve(async (req) => {
     const requestBody = await req.json();
     console.log('Request body:', JSON.stringify(requestBody, null, 2));
 
-    const { action, email, amount, metadata, channels, reference } = requestBody;
+    const { action, email, amount, metadata, channels, reference, callback_url } = requestBody;
 
     if (action === 'initialize') {
       // Initialize Paystack transaction
-      // Initialize Paystack transaction
       // Use the public Functions domain for webhooks (required for external providers)
       const functionsBase = supabaseUrl.replace('.supabase.co', '.functions.supabase.co');
-      const callbackUrl = `${functionsBase}/paystack-callback`;
+      const webhookUrl = `${functionsBase}/paystack-callback`;
       
       const paystackResponse = await fetch('https://api.paystack.co/transaction/initialize', {
         method: 'POST',
@@ -59,7 +58,7 @@ serve(async (req) => {
         body: JSON.stringify({
           email,
           amount: Math.round(amount * 100), // Convert to kobo/cents
-          callback_url: callbackUrl,
+          callback_url: callback_url || undefined, // User redirect URL
           metadata: metadata || {},
           channels: channels || ['card', 'bank', 'ussd', 'mobile_money', 'bank_transfer'],
         }),

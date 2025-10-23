@@ -211,7 +211,7 @@ serve(async (req) => {
         }
 
         // Update user wallet based on payment purpose
-        if (transaction.purpose === 'other' || transaction.purpose === 'wallet_topup') {
+        if (transaction.purpose === 'other' || transaction.purpose === 'wallet_topup' || transaction.purpose === 'add_money') {
           // Get or create user central wallet
           let { data: centralWallet, error: centralWalletFetchError } = await supabase
             .from('user_central_wallets')

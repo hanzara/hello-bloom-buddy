@@ -46,6 +46,7 @@ import ApplyLoanPage from "./pages/ApplyLoanPage";
 import AdminDemoPage from "./pages/AdminDemoPage";
 import BudgetTrackerPage from "./pages/BudgetTrackerPage";
 import NotFound from "./pages/NotFound";
+import PaymentCallbackPage from "./pages/PaymentCallbackPage";
 import DashboardPage from "./pages/DashboardPage";
 import DealsAndBillsPage from "./pages/DealsAndBillsPage";
 import WifiAccessPage from "./pages/WifiAccessPage";
@@ -205,6 +206,7 @@ function App() {
                         <Route path="/trivia-game" element={<TriviaGamePage />} />
                         <Route path="/make-contribution" element={<MakeContributionPage />} />
                         <Route path="/profile-settings" element={<ProfileSettingsPage />} />
+                        <Route path="/payment-callback" element={<PaymentCallbackPage />} />
                         <Route path="*" element={<NotFound />} />
                       </Routes>
                     </AppLayout>

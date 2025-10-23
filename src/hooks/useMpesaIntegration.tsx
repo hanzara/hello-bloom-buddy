@@ -56,12 +56,14 @@ export const useMpesaIntegration = () => {
 
       try {
         const userEmail = user.email || `${phoneNumber}@temp.paystack.com`;
+        const callbackUrl = `${window.location.origin}/payment-callback`;
         
         const { data, error } = await supabase.functions.invoke('paystack-integration', {
           body: {
             action: 'initialize',
             email: userEmail,
             amount,
+            callback_url: callbackUrl,
             metadata: {
               user_id: user.id,
               purpose,
