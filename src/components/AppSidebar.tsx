@@ -67,13 +67,13 @@ const menuItems = [
     title: "Exams",
     url: "/exams",
     icon: ClipboardList,
-    available: false
+    available: true
   },
   {
     title: "Results",
     url: "/results",
     icon: FileText,
-    available: false
+    available: true
   },
   {
     title: "Fees",

@@ -8,6 +8,8 @@ import { AppSidebar } from "@/components/AppSidebar";
 import { AppHeader } from "@/components/AppHeader";
 import Dashboard from "./pages/Dashboard";
 import Students from "./pages/Students";
+import Exams from "./pages/Exams";
+import Results from "./pages/Results";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +29,8 @@ const App = () => (
                 <Routes>
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/students" element={<Students />} />
+                  <Route path="/exams" element={<Exams />} />
+                  <Route path="/results" element={<Results />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />
                 </Routes>
