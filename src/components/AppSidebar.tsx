@@ -130,37 +130,36 @@ export function AppSidebar() {
                 const Icon = item.icon;
                 return (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton
-                      asChild
-                      tooltip={item.title}
-                      disabled={!item.available}
-                    >
-                      <NavLink
-                        to={item.url}
-                        end={item.url === "/"}
-                        className={({ isActive }) =>
-                          `flex items-center gap-3 ${
-                            isActive
-                              ? "bg-primary text-white font-medium"
-                              : item.available
-                              ? "text-gray-300 hover:bg-gray-900 hover:text-white"
-                              : "text-gray-600 cursor-not-allowed"
-                          }`
-                        }
-                      >
+                    {item.available ? (
+                      <SidebarMenuButton asChild tooltip={item.title}>
+                        <NavLink
+                          to={item.url}
+                          end={item.url === "/"}
+                          className={({ isActive }) =>
+                            `flex items-center gap-3 ${
+                              isActive
+                                ? "bg-primary text-white font-medium"
+                                : "text-gray-300 hover:bg-gray-900 hover:text-white"
+                            }`
+                          }
+                        >
+                          <Icon className="w-4 h-4 shrink-0" />
+                          {!isCollapsed && <span>{item.title}</span>}
+                        </NavLink>
+                      </SidebarMenuButton>
+                    ) : (
+                      <SidebarMenuButton tooltip={item.title} disabled>
                         <Icon className="w-4 h-4 shrink-0" />
                         {!isCollapsed && (
                           <div className="flex items-center justify-between w-full">
                             <span>{item.title}</span>
-                            {!item.available && (
-                              <span className="text-[10px] bg-gray-800 text-gray-400 px-1.5 py-0.5 rounded">
-                                Soon
-                              </span>
-                            )}
+                            <span className="text-[10px] bg-gray-800 text-gray-400 px-1.5 py-0.5 rounded">
+                              Soon
+                            </span>
                           </div>
                         )}
-                      </NavLink>
-                    </SidebarMenuButton>
+                      </SidebarMenuButton>
+                    )}
                   </SidebarMenuItem>
                 );
               })}
