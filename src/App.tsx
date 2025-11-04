@@ -24,83 +24,81 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+const ProtectedLayout = () => (
+  <SidebarProvider defaultOpen={true}>
+    <div className="flex min-h-screen w-full">
+      <AppSidebar />
+      <div className="flex-1 flex flex-col w-full">
+        <AppHeader />
+        <main className="flex-1 bg-background">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/students" element={<Students />} />
+            <Route path="/exams" element={<Exams />} />
+            <Route path="/results" element={<Results />} />
+            
+            {/* Role-based dashboards */}
+            <Route path="/dashboard/admin" element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <AdminDashboard />
+              </ProtectedRoute>
+            } />
+            <Route path="/dashboard/headteacher" element={
+              <ProtectedRoute allowedRoles={['headteacher']}>
+                <HeadteacherDashboard />
+              </ProtectedRoute>
+            } />
+            <Route path="/dashboard/teacher" element={
+              <ProtectedRoute allowedRoles={['teacher']}>
+                <TeacherDashboard />
+              </ProtectedRoute>
+            } />
+            <Route path="/dashboard/staff" element={
+              <ProtectedRoute allowedRoles={['staff']}>
+                <StaffDashboard />
+              </ProtectedRoute>
+            } />
+            <Route path="/dashboard/parent" element={
+              <ProtectedRoute allowedRoles={['parent']}>
+                <ParentDashboard />
+              </ProtectedRoute>
+            } />
+            <Route path="/dashboard/student" element={
+              <ProtectedRoute allowedRoles={['student']}>
+                <StudentDashboard />
+              </ProtectedRoute>
+            } />
+            
+            {/* Admin-only signup route */}
+            <Route path="/signup" element={<Signup />} />
+            
+            {/* Catch-all */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+      </div>
+    </div>
+  </SidebarProvider>
+);
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <AuthProvider>
+    <BrowserRouter>
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
           <Routes>
-            {/* Public routes */}
             <Route path="/login" element={<Login />} />
-            
-            {/* Protected routes with layout */}
-            <Route
-              path="/*"
-              element={
-                <ProtectedRoute>
-                  <SidebarProvider defaultOpen={true}>
-                    <div className="flex min-h-screen w-full">
-                      <AppSidebar />
-                      <div className="flex-1 flex flex-col w-full">
-                        <AppHeader />
-                        <main className="flex-1 bg-background">
-                          <Routes>
-                            <Route path="/" element={<Dashboard />} />
-                            <Route path="/students" element={<Students />} />
-                            <Route path="/exams" element={<Exams />} />
-                            <Route path="/results" element={<Results />} />
-                            
-                            {/* Role-based dashboards */}
-                            <Route path="/dashboard/admin" element={
-                              <ProtectedRoute allowedRoles={['admin']}>
-                                <AdminDashboard />
-                              </ProtectedRoute>
-                            } />
-                            <Route path="/dashboard/headteacher" element={
-                              <ProtectedRoute allowedRoles={['headteacher']}>
-                                <HeadteacherDashboard />
-                              </ProtectedRoute>
-                            } />
-                            <Route path="/dashboard/teacher" element={
-                              <ProtectedRoute allowedRoles={['teacher']}>
-                                <TeacherDashboard />
-                              </ProtectedRoute>
-                            } />
-                            <Route path="/dashboard/staff" element={
-                              <ProtectedRoute allowedRoles={['staff']}>
-                                <StaffDashboard />
-                              </ProtectedRoute>
-                            } />
-                            <Route path="/dashboard/parent" element={
-                              <ProtectedRoute allowedRoles={['parent']}>
-                                <ParentDashboard />
-                              </ProtectedRoute>
-                            } />
-                            <Route path="/dashboard/student" element={
-                              <ProtectedRoute allowedRoles={['student']}>
-                                <StudentDashboard />
-                              </ProtectedRoute>
-                            } />
-                            
-                            {/* Admin-only signup route */}
-                            <Route path="/signup" element={<Signup />} />
-                            
-                            {/* Catch-all */}
-                            <Route path="*" element={<NotFound />} />
-                          </Routes>
-                        </main>
-                      </div>
-                    </div>
-                  </SidebarProvider>
-                </ProtectedRoute>
-              }
-            />
+            <Route path="/*" element={
+              <ProtectedRoute>
+                <ProtectedLayout />
+              </ProtectedRoute>
+            } />
           </Routes>
-        </AuthProvider>
-      </BrowserRouter>
-    </TooltipProvider>
+        </TooltipProvider>
+      </AuthProvider>
+    </BrowserRouter>
   </QueryClientProvider>
 );
 
